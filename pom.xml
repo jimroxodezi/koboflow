@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+		 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+		 xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<groupId>com.example</groupId>
+	<artifactId>koboflow</artifactId>
+	<version>1.0.0-SNAPSHOT</version>
+	<packaging>pom</packaging>
+	<name>Koboflow</name>
+	<description>Parent POM for the Koboflow Java services</description>
+
+	<!-- Add each service directory here, for example: <module>services/orders</module> -->
+	<modules>
+		<!-- <module>koboflow-service</module> -->
+        <module>koboflow-core</module>
+        <module>koboflow-common</module>
+	</modules>
+
+	<properties>
+        <java.version>25</java.version>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <shedlock.version>7.11.0</shedlock.version>
+        <resilience4j.version>2.4.0</resilience4j.version>
+		<!-- <maven.compiler.release>17</maven.compiler.release>
+		<maven.compiler.plugin.version>3.13.0</maven.compiler.plugin.version> -->   
+        <!--
+		<maven.surefire.plugin.version>3.5.2</maven.surefire.plugin.version> -->
+        <!--  -->
+        <!-- Tests tagged @Tag("demo") deliberately show failures (races, lost
+            updates...). They are skipped by default; run them with
+            ./mvnw test -DexcludedGroups= -Dgroups=demo -->
+        <excludedGroups>demo</excludedGroups>
+	</properties>
+
+	<build>
+		<pluginManagement>
+			<plugins>
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-compiler-plugin</artifactId>
+					<version>${maven.compiler.plugin.version}</version>
+					<configuration>
+						<release>${maven.compiler.release}</release>
+					</configuration>
+				</plugin>
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-surefire-plugin</artifactId>
+					<version>${maven.surefire.plugin.version}</version>
+				</plugin>
+			</plugins>
+		</pluginManagement>
+	</build>
+</project>
